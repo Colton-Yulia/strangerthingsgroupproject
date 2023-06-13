@@ -1,5 +1,5 @@
 const AllPosts = () => {
-  return <>Hello World</>;
+  return <>Hello Yulia</>;
 };
 
 export default AllPosts;
