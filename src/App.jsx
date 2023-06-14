@@ -24,7 +24,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<PostsList allPosts={allPosts} />} />
+        <Route path="/" element={<PostsList allPostss={allPosts} />} />
       </Routes>
     </>
   );
