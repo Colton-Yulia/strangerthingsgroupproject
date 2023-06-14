@@ -6,8 +6,9 @@ const PostsList = ({ allPosts }) => {
       <div>
         {allPosts.length ? (
           allPosts.map((singlePost) => {
+            console.log(singlePost);
             return (
-              <div key={singlePost.id}>
+              <div key={singlePost._id}>
                 <p>Location: {singlePost.location}</p>
               </div>
             );
