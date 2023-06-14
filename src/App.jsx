@@ -14,7 +14,7 @@ function App() {
         const res = await fetch(`${BASE_URL}/posts`);
         const translatedData = await res.json();
         setAllPosts(translatedData.data.posts);
-        console.log(translatedData.data.posts);
+        console.log(translatedData.data.postss);
       } catch (error) {
         console.log(error);
       }
