@@ -40,8 +40,8 @@ const NewPost = () => {
             <input
               type="text"
               name="location"
-              // value={location}
-              // onChange={EventTarget.value}
+              value={location}
+              onChange={(e) => e.target.value}
             ></input>
           </label>
         </div>
@@ -52,8 +52,8 @@ const NewPost = () => {
             <input
               type="text"
               name="delivery"
-              // value={delivery}
-              // onChange={EventTarget.value}
+              value={delivery}
+              onChange={(e) => e.target.value}
             ></input>
           </label>
         </div>
@@ -65,8 +65,8 @@ const NewPost = () => {
             <input
               type="text"
               name="messages"
-              // value={messages}
-              // onChange={EventTarget.value}
+              value={messages}
+              onChange={(e) => e.target.value}
             ></input>
           </label>
         </div>
@@ -77,8 +77,8 @@ const NewPost = () => {
             <input
               type="text"
               name="active"
-              // value={active}
-              // onChange={EventTarget.value}
+              value={active}
+              onChange={(e) => e.target.value}
             ></input>
           </label>
         </div>

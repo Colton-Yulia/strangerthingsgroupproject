@@ -6,6 +6,8 @@ import SinglePost from "./components/SinglePost";
 import NavBar from "./components/NavBar";
 import NewPost from "./components/NewPost";
 import HomePage from "./components/HomePage";
+// import Login from "./components/Login";
+// import Register from "./components/Register";
 
 function App() {
   const COHORT_NAME = "2209-FTB-ET-WEB-FT";
@@ -31,6 +33,8 @@ function App() {
       <Routes>
         <Route path="/posts" element={<PostsList />} />
         <Route path="/newpost" element={<NewPost />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route
           path="/singlepost/:id"
           element={<SinglePost allPosts={allPosts} />}
