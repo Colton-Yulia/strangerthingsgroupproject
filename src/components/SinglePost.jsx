@@ -30,9 +30,13 @@ const SinglePostView = ({ allPosts }) => {
             <ul>
               <li>Location: {singleFilteredPost.location}</li>
               <li>Delivery: {singleFilteredPost.willDeliver ? "Yes" : "No"}</li>
-
-              {/* map through array */}
-              {/* <li>Messages: {singleFilteredPost.messages}</li> */}
+              map through array
+              <li>
+                Messages:{" "}
+                {singleFilteredPost.messages.length !== 0
+                  ? "new messages"
+                  : "no new messages"}
+              </li>
               <li>
                 Is Currently Active:{" "}
                 {singleFilteredPost.active ? "Active" : "Inactive"}

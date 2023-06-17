@@ -6,7 +6,7 @@ import App from "../App";
 
 const NavBar = () => {
   return (
-    <>
+    <div>
       <div className="nav-bar">
         <div>
           <button className="btn">
@@ -27,7 +27,7 @@ const NavBar = () => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

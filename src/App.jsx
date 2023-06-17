@@ -28,7 +28,6 @@ function App() {
   return (
     <>
       <NavBar />
-
       <Routes>
         <Route path="/posts" element={<PostsList />} />
         <Route path="/newpost" element={<NewPost />} />
