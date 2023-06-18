@@ -1,14 +1,36 @@
-import { Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import "./postList.css";
 
-const PostsList = ({ allPosts }) => {
+const PostsList = () => {
+  const COHORT_NAME = "2209-FTB-ET-WEB-FT";
+  const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
+  const [allPosts, setAllPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/posts`);
+        const translatedData = await res.json();
+        setAllPosts(translatedData.data.posts);
+        console.log(translatedData.data.posts);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div>
-      <div>
+      <div className="post-list-body">
         {allPosts.length ? (
           allPosts.map((singlePost) => {
             return (
-              <div key={singlePost.id}>
-                <p>Location: {singlePost.location}</p>
+              <div key={singlePost._id} className="posts-list">
+                <ul>
+                  <li>Location: {singlePost.location}</li>
+                  <Link to="/SinglePost">More Details</Link>
+                </ul>
               </div>
             );
           })
@@ -16,7 +38,6 @@ const PostsList = ({ allPosts }) => {
           <p>Loading...</p>
         )}
       </div>
-      <Link to="/">Home</Link>
     </div>
   );
 };

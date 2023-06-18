@@ -6,13 +6,22 @@ import SinglePost from "./components/SinglePost";
 import NavBar from "./components/NavBar";
 import NewPost from "./components/NewPost";
 import HomePage from "./components/HomePage";
-// import Login from "./components/Login";
-// import Register from "./components/Register";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
   const COHORT_NAME = "2209-FTB-ET-WEB-FT";
   const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
   const [allPosts, setAllPosts] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,20 +38,26 @@ function App() {
   }, []);
   return (
     <div>
-      <NavBar />
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
         <Route path="/posts" element={<PostsList allPosts={allPosts} />} />
         <Route path="/newpost" element={<NewPost />} />
-        {/* <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} /> */}
         <Route
           path="/singlepost/:id"
           element={<SinglePost allPosts={allPosts} />}
         />
+        <Route
+          path="/singlepost/"
+          element={<SinglePost allPosts={allPosts} />}
+        />
         <Route path="/" element={<HomePage />} />
         <Route
-          path="/singlepost"
-          element={<SinglePost allPosts={allPosts} />}
+          path="/login"
+          element={<Login setIsLoggedIn={setIsLoggedIn} />}
+        />
+        <Route
+          path="/register"
+          element={<Register setIsLoggedIn={setIsLoggedIn} />}
         />
       </Routes>
     </div>

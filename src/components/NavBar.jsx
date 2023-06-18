@@ -1,32 +1,52 @@
-import { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import PostsList from "./PostsList";
+import { Link } from "react-router-dom";
 import "./navBar.css";
-import App from "../App";
 
-const NavBar = () => {
+const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
   return (
     <div>
-      <div className="nav-bar">
-        <div>
-          <button className="btn">
-            <Link to="/">Home</Link>
-          </button>
+      {isLoggedIn ? (
+        <div className="nav-bar">
+          {" "}
+          <div>
+            <button className="btn">
+              <Link to="/">Home</Link>
+            </button>
+          </div>
+          <div>
+            <button className="btn">
+              <Link to="/posts">Posts</Link>
+            </button>
+            <button
+              onClick={() => {
+                setIsLoggedIn(false);
+                localStorage.removeItem("token");
+              }}
+            >
+              Log Out
+            </button>
+          </div>
         </div>
-
-        <div>LogoPlaceHolder</div>
-        <div>
-          <button className="btn">
-            <Link to="/login">Login</Link>
-          </button>
-          <button className="btn">
-            <Link to="/signup">Sign Up</Link>
-          </button>
-          <button className="btn">
-            <Link to="/posts">Posts</Link>
-          </button>
+      ) : (
+        <div className="nav-bar">
+          <div>
+            <button className="btn">
+              <Link to="/">Home</Link>
+            </button>
+          </div>
+          <div>LogoPlaceHolder</div>
+          <div>
+            <button className="btn">
+              <Link to="/posts">Posts</Link>
+            </button>
+            <button className="btn">
+              <Link to="/login">Login</Link>
+            </button>
+            <button className="btn">
+              <Link to="/register">Sign Up</Link>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

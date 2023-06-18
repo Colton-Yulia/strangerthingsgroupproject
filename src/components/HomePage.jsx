@@ -1,9 +1,9 @@
-import NewPost from "./NewPost";
+import "./homePage.css";
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>Welcome to the upside down!</h1>
+    <div className="home-container">
+      <h1>Welcome to the Upside Down!</h1>
     </div>
   );
 };

@@ -39,7 +39,7 @@ const NewPost = () => {
               type="text"
               name="location"
               value={location}
-              onChange={(e) => e.target.value}
+              onChange={(e) => setLocation(e.target.value)}
             ></input>
           </label>
         </div>
@@ -51,12 +51,11 @@ const NewPost = () => {
               type="text"
               name="delivery"
               value={delivery}
-              onChange={(e) => e.target.value}
+              onChange={(e) => setDelivery(e.target.value)}
             ></input>
           </label>
         </div>
         <div>
-          {/* create ternary to indicate messages available */}
           <label for="messages">
             {" "}
             Messages:
@@ -64,7 +63,7 @@ const NewPost = () => {
               type="text"
               name="messages"
               value={messages}
-              onChange={(e) => e.target.value}
+              onChange={(e) => setMessages(e.target.value)}
             ></input>
           </label>
         </div>
@@ -76,7 +75,7 @@ const NewPost = () => {
               type="text"
               name="active"
               value={active}
-              onChange={(e) => e.target.value}
+              onChange={(e) => setActive(e.target.value)}
             ></input>
           </label>
         </div>

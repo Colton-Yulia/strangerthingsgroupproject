@@ -1,0 +1,8 @@
+.post-list-body {
+  display: flex;
+  flex-direction: row;
+}
+
+li {
+  list-style: none;
+}
