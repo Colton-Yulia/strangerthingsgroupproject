@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import "./singlePost.css";
-import "./generalStyles.css";
+// import "./singlePost.css";
+// import "./generalStyles.css";
 
-const SinglePostView = ({ allPosts }) => {
+const SinglePost = ({ allPosts }) => {
   const { id } = useParams();
   const [singleFilteredPost, setSingleFilteredPost] = useState(null);
   console.log(id);
@@ -30,7 +30,7 @@ const SinglePostView = ({ allPosts }) => {
             <ul>
               <li>Location: {singleFilteredPost.location}</li>
               <li>Delivery: {singleFilteredPost.willDeliver ? "Yes" : "No"}</li>
-              map through array
+
               <li>
                 Messages:{" "}
                 {singleFilteredPost.messages.length !== 0
@@ -54,4 +54,4 @@ const SinglePostView = ({ allPosts }) => {
   );
 };
 
-export default SinglePostView;
+export default SinglePost;

@@ -10,8 +10,6 @@ const NewPost = () => {
   const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
   const handleSubmit = async (e) => {
-    console.log(BASE_URL);
-
     e.preventDefault();
     try {
       const newPost = { location, delivery, messages, active };
@@ -31,7 +29,7 @@ const NewPost = () => {
     }
   };
   return (
-    <div>
+    <div className="new-post-container">
       <form onSubmit={handleSubmit}>
         <div>
           <label for="location">

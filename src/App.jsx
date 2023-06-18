@@ -28,20 +28,24 @@ function App() {
     fetchData();
   }, []);
   return (
-    <>
+    <div>
       <NavBar />
       <Routes>
-        <Route path="/posts" element={<PostsList />} />
+        <Route path="/posts" element={<PostsList allPosts={allPosts} />} />
         <Route path="/newpost" element={<NewPost />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} /> */}
         <Route
           path="/singlepost/:id"
           element={<SinglePost allPosts={allPosts} />}
         />
         <Route path="/" element={<HomePage />} />
+        <Route
+          path="/singlepost"
+          element={<SinglePost allPosts={allPosts} />}
+        />
       </Routes>
-    </>
+    </div>
   );
 }
 
