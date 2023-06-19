@@ -20,7 +20,7 @@ function App() {
       }
     };
     fetchData();
-  }, []);
+  }, [BASE_URL]);
   return (
     <>
       <Routes>
