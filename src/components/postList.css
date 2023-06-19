@@ -1,0 +1,23 @@
+.post-list-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+ul {
+  border: 1px solid #fff;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 1rem;
+  padding-left: 0.5rem;
+}
+
+li {
+  width: 10rem;
+  height: 5rem;
+  display: flex;
+  list-style: none;
+}

@@ -1,0 +1,13 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  height: 2rem;
+  width: 10rem;
+  padding: 0.5rem;
+  margin: 1rem;
+}
