@@ -18,7 +18,6 @@ const PostsList = () => {
         const res = await fetch(`${BASE_URL}/posts`);
         const translatedData = await res.json();
         setAllPosts(translatedData.data.posts);
-        console.log(translatedData.data.posts);
       } catch (error) {
         console.log(error);
       }
@@ -51,6 +50,10 @@ const PostsList = () => {
                     {singlePost.active ? "Active" : "Inactive"}
                   </li>
                 </ul>
+                <button>
+                  singlepost
+                  <Link to="/singlepost/:id" />
+                </button>
               </div>
             );
           })

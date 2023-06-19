@@ -111,7 +111,7 @@ const postMessage = async () => {
         },
         body: JSON.stringify({
           message: {
-            content: "Do you still have this?  Would you take $10 less?",
+            content: content,
           },
         }),
       }

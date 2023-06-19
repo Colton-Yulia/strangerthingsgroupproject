@@ -67,6 +67,12 @@ function App() {
           path="/register"
           element={<Register setIsLoggedIn={setIsLoggedIn} />}
         />
+        <Route
+          path="/singlepost/:id"
+          element={
+            <SinglePost setIsLoggedIn={setIsLoggedIn} allPosts={allPosts} />
+          }
+        />
       </Routes>
     </div>
   );

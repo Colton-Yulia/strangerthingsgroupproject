@@ -20,8 +20,6 @@ const NewPost = ({ setIsLoggedIn }) => {
         willDeliver
       );
       console.log(result);
-      localStorage.getItem("token");
-      setIsLoggedIn(true);
     } catch (err) {
       console.error(err);
     }
