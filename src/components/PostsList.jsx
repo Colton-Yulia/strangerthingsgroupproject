@@ -25,6 +25,7 @@ const PostsList = () => {
       <div className="post-list-body">
         {allPosts.length ? (
           allPosts.map((singlePost) => {
+            console.log(singlePost);
             return (
               <div key={singlePost._id} className="posts-list">
                 <ul>
@@ -41,7 +42,6 @@ const PostsList = () => {
                     Is Currently Active:{" "}
                     {singlePost.active ? "Active" : "Inactive"}
                   </li>
-                </ul>
               </div>
             );
           })
