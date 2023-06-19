@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import PostsList from "./components/PostsList";
 import { Routes, Route } from "react-router-dom";
-// import SinglePost from "./components/SinglePost";
 import NavBar from "./components/NavBar";
 import NewPost from "./components/NewPost";
 import HomePage from "./components/HomePage";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import SinglePost from "./components/SinglePost";
 
 function App() {
   const COHORT_NAME = "2304-FTB-ET-WEB-FT";
@@ -54,6 +54,12 @@ function App() {
         <Route
           path="/login"
           element={<Login setIsLoggedIn={setIsLoggedIn} />}
+        />
+        <Route
+          path="/singlepost/:id"
+          element={
+            <SinglePost setIsLoggedIn={setIsLoggedIn} allPosts={allPosts} />
+          }
         />
         <Route
           path="/register"

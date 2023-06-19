@@ -4,7 +4,7 @@ import "./newPost.css";
 
 const NewPost = ({ setIsLoggedIn }) => {
   const [title, setTitle] = useState("");
-  // const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [willDeliver, setWillDeliver] = useState("");
@@ -66,7 +66,7 @@ const NewPost = ({ setIsLoggedIn }) => {
             ></input>
           </label>
         </div>
-        {/* <div>
+        <div>
           <label htmlFor="location">
             Location:
             <input
@@ -78,7 +78,7 @@ const NewPost = ({ setIsLoggedIn }) => {
               }}
             ></input>
           </label>
-        </div> */}
+        </div>
         <div>
           <label htmlFor="willDeliver">
             Will Deliver:

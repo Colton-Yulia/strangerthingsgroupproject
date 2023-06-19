@@ -58,6 +58,7 @@ const PostsList = () => {
                 >
                   Delete
                 </button>
+                <Link to="/singlepost/:id">More Details</Link>
               </div>
             );
           })

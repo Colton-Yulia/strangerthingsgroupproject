@@ -7,7 +7,7 @@ const TOKEN_STRING = localStorage.getItem("token");
 
 export const registerUser = async (username, password) => {
   try {
-    const response = await fetch(`${BASE_URL}/users/login`, {
+    const response = await fetch(`${BASE_URL}/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +51,13 @@ export const loginUser = async (username, password) => {
   return;
 };
 
-export const newPost = async (title, description, price, willDeliver) => {
+export const newPost = async (
+  title,
+  description,
+  price,
+  location,
+  willDeliver
+) => {
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "POST",
@@ -63,6 +69,7 @@ export const newPost = async (title, description, price, willDeliver) => {
         title: title,
         description: description,
         price: price,
+        location: location,
         willDeliver: willDeliver,
       }),
     });
