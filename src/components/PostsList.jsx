@@ -29,7 +29,18 @@ const PostsList = () => {
               <div key={singlePost._id} className="posts-list">
                 <ul>
                   <li>Location: {singlePost.location}</li>
-                  <Link to="/SinglePost">More Details</Link>
+                  <li>Delivery: {singlePost.willDeliver ? "Yes" : "No"}</li>
+
+                  <li>
+                    Messages:{" "}
+                    {singlePost.messages.length !== 0
+                      ? "new messages"
+                      : "no new messages"}
+                  </li>
+                  <li>
+                    Is Currently Active:{" "}
+                    {singlePost.active ? "Active" : "Inactive"}
+                  </li>
                 </ul>
               </div>
             );

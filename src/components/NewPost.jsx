@@ -1,29 +1,18 @@
 import React, { useState } from "react";
 import "./newPost.css";
 
-const NewPost = () => {
+const NewPost = ({ isLoggedIn }) => {
   const [location, setLocation] = useState("");
-  const [delivery, setDelivery] = useState("");
+  const [delivery, setDelivery] = useState(null);
   const [messages, setMessages] = useState("");
-  const [active, setActive] = useState("");
-  const COHORT_NAME = "2209-FTB-ET-WEB-FT";
-  const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
+  const [active, setActive] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newPost = { location, delivery, messages, active };
-      const response = await fetch(`${BASE_URL}/posts`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${TOKEN_STRING_HERE}`,
-        },
-        body: JSON.stringify({ post: newPost }),
-      });
-      const result = await response.json();
-      console.log(result);
-      return result;
+      {
+        isLoggedIn === true ? handleSubmit() : "Please create a profile";
+      }
     } catch (err) {
       console.error(err);
     }
@@ -32,7 +21,7 @@ const NewPost = () => {
     <div className="new-post-container">
       <form onSubmit={handleSubmit}>
         <div>
-          <label for="location">
+          <label htmlFor="location">
             {" "}
             Location:
             <input
@@ -44,19 +33,22 @@ const NewPost = () => {
           </label>
         </div>
         <div>
-          <label for="delivery">
+          <label htmlFor="delivery">
             {" "}
             Delivery:
-            <input
-              type="text"
+            <select
+              type="select"
               name="delivery"
               value={delivery}
               onChange={(e) => setDelivery(e.target.value)}
-            ></input>
+            >
+              <option value="Yes">No</option>
+              <option value="No">No</option>
+            </select>
           </label>
         </div>
         <div>
-          <label for="messages">
+          <label htmlFor="messages">
             {" "}
             Messages:
             <input
@@ -68,7 +60,7 @@ const NewPost = () => {
           </label>
         </div>
         <div>
-          <label for="active">
+          <label htmlFor="active">
             {" "}
             Active:
             <input

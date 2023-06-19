@@ -57,7 +57,6 @@ const Login = ({ setIsLoggedIn }) => {
         <button type="submit" className="loginBtn">
           Submit
         </button>
-        <Link to="/login">Already have an account? Log in here</Link>
       </form>
     </div>
   );
