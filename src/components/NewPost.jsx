@@ -1,18 +1,25 @@
 import React, { useState } from "react";
+import { newPost } from "../api-adapters";
 import "./newPost.css";
 
-const NewPost = ({ isLoggedIn }) => {
+const NewPost = ({ setIsLoggedIn }) => {
+  const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
-  const [delivery, setDelivery] = useState(null);
-  const [messages, setMessages] = useState("");
-  const [active, setActive] = useState(null);
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [willDeliver, setWillDeliver] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      {
-        isLoggedIn === true ? handleSubmit() : "Please create a profile";
-      }
+      const result = await newPost(
+        title,
+        description,
+        price,
+        location,
+        willDeliver
+      );
+      console.log(result);
     } catch (err) {
       console.error(err);
     }
@@ -21,53 +28,65 @@ const NewPost = ({ isLoggedIn }) => {
     <div className="new-post-container">
       <form onSubmit={handleSubmit}>
         <div>
+          <label htmlFor="title">
+            Title:
+            <input
+              type="text"
+              name="title"
+              value={title}
+              onChange={(e) => {
+                setTitle(e.target.value), console.log(e.target.value);
+              }}
+            ></input>
+          </label>
+        </div>
+        <div>
+          <label htmlFor="description">
+            Description:
+            <input
+              type="text"
+              name="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            ></input>
+          </label>
+        </div>
+        <div>
+          <label htmlFor="price">
+            Price:
+            <input
+              type="text"
+              name="price"
+              value={price}
+              onChange={(e) => {
+                setPrice(e.target.value), console.log(e.target.value);
+              }}
+            ></input>
+          </label>
+        </div>
+        <div>
           <label htmlFor="location">
-            {" "}
             Location:
             <input
               type="text"
               name="location"
               value={location}
-              onChange={(e) => setLocation(e.target.value)}
+              onChange={(e) => {
+                setLocation(e.target.value), console.log(e.target.value);
+              }}
             ></input>
           </label>
         </div>
         <div>
-          <label htmlFor="delivery">
-            {" "}
-            Delivery:
-            <select
-              type="select"
-              name="delivery"
-              value={delivery}
-              onChange={(e) => setDelivery(e.target.value)}
-            >
-              <option value="Yes">No</option>
-              <option value="No">No</option>
-            </select>
-          </label>
-        </div>
-        <div>
-          <label htmlFor="messages">
-            {" "}
-            Messages:
+          <label htmlFor="willDeliver">
+            Will Deliver:
             <input
               type="text"
-              name="messages"
-              value={messages}
-              onChange={(e) => setMessages(e.target.value)}
-            ></input>
-          </label>
-        </div>
-        <div>
-          <label htmlFor="active">
-            {" "}
-            Active:
-            <input
-              type="text"
-              name="active"
-              value={active}
-              onChange={(e) => setActive(e.target.value)}
+              name="willDeliver"
+              value={willDeliver}
+              onChange={(e) => {
+                setWillDeliver(e.target.value), console.log(e.target.value);
+              }}
             ></input>
           </label>
         </div>

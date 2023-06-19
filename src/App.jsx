@@ -8,7 +8,7 @@ import NewPost from "./components/NewPost";
 import HomePage from "./components/HomePage";
 import Login from "./components/Login";
 import Register from "./components/Register";
-
+import SinglePost from "./components/SinglePost";
 
 function App() {
   const COHORT_NAME = "2304-FTB-ET-WEB-FT";
@@ -41,10 +41,17 @@ function App() {
   }, []);
   return (
     <div>
-      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <NavBar
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        allPosts={allPosts}
+      />
       <Routes>
         <Route path="/posts" element={<PostsList allPosts={allPosts} />} />
-        <Route path="/newpost" element={<NewPost isLoggedIn={isLoggedIn} />} />
+        <Route
+          path="/newpost"
+          element={<NewPost setIsLoggedIn={setIsLoggedIn} />}
+        />
 
         <Route path="/" element={<HomePage />} />
         <Route
@@ -52,10 +59,21 @@ function App() {
           element={<Login setIsLoggedIn={setIsLoggedIn} />}
         />
         <Route
+          path="/singlepost/:id"
+          element={
+            <SinglePost setIsLoggedIn={setIsLoggedIn} allPosts={allPosts} />
+          }
+        />
+        <Route
           path="/register"
           element={<Register setIsLoggedIn={setIsLoggedIn} />}
         />
-
+        <Route
+          path="/singlepost/:id"
+          element={
+            <SinglePost setIsLoggedIn={setIsLoggedIn} allPosts={allPosts} />
+          }
+        />
       </Routes>
     </div>
   );
