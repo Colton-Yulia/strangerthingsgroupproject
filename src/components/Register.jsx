@@ -1,25 +1,22 @@
-
-//const BASE_URL = "https://strangers-things.herokuapp.com/api/2304-ftb-et-web-ft";
-//const COHORT_NAME = '2304-FTB-ET-WEB-FT';
-import "./login.css";
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { loginUser } from "../api-adapters";
+import { registerUser } from "../api-adapters";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setIsLoggedIn }) => {
+const Register = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     // e.preventDefault();
     try {
-      const result = await loginUser(username, password);
+      const result = await registerUser(username, password);
       console.log(result);
+
       localStorage.setItem("token", result.token);
       setIsLoggedIn(true);
-      navigate("/profile");
+      navigate("/posts");
     } catch (error) {
       console.log(error);
     }
@@ -58,9 +55,11 @@ const Login = ({ setIsLoggedIn }) => {
         <button type="submit" className="loginBtn">
           Submit
         </button>
+        <Link to="/login">Already have an account? Log in here</Link>
       </form>
     </div>
+
   );
 };
 
-export default Login;
+export default Register;
