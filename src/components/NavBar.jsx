@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./navBar.css";
 
-const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
+const NavBar = ({ isLoggedIn, setIsLoggedIn, allPosts }) => {
+  const [input, setInput] = useState(allPosts);
+
   return (
     <div>
       {isLoggedIn ? (
@@ -12,7 +15,20 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn }) => {
               <Link to="/">Home</Link>
             </button>
           </div>
-          <div>
+          {/* implement search bar */}
+          <div className="search">
+            <form>
+              <input
+                className="search-bar"
+                placeholder="Search"
+                value={input}
+                onChange={(e) =>
+                  allPosts.filter((singlePost) => {
+                    return <div key={singlePost._id}></div>;
+                  })
+                }
+              ></input>
+            </form>
             <button className="btn">
               <Link to="/posts">Posts</Link>
             </button>

@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 const Login = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     // e.preventDefault();
@@ -17,6 +18,7 @@ const Login = ({ setIsLoggedIn }) => {
       const result = await loginUser(username, password);
       console.log(result);
       localStorage.setItem("token", result.token);
+      console.log(token);
       setIsLoggedIn(true);
       navigate("/profile");
     } catch (error) {
