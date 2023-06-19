@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import PostsList from "./components/PostsList";
 import { Routes, Route } from "react-router-dom";
+
 import NavBar from "./components/NavBar";
 import NewPost from "./components/NewPost";
 import HomePage from "./components/HomePage";
@@ -35,6 +36,7 @@ function App() {
       }
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div>

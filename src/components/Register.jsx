@@ -58,6 +58,7 @@ const Register = ({ setIsLoggedIn }) => {
         <Link to="/login">Already have an account? Log in here</Link>
       </form>
     </div>
+
   );
 };
 

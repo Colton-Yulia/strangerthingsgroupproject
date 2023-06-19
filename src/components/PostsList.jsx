@@ -31,6 +31,7 @@ const PostsList = () => {
       <div className="post-list-body">
         {allPosts.length ? (
           allPosts.map((singlePost) => {
+            console.log(singlePost);
             return (
               <div key={singlePost._id} className="posts-list">
                 <ul>
@@ -50,15 +51,6 @@ const PostsList = () => {
                     {singlePost.active ? "Active" : "Inactive"}
                   </li>
                 </ul>
-                <button
-                  onClick={() => (
-                    localStorage.removeItem("token"),
-                    setRemovePostRequest(singlePost._id)
-                  )}
-                >
-                  Delete
-                </button>
-                <Link to="/singlepost/:id">More Details</Link>
               </div>
             );
           })
