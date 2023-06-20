@@ -14,6 +14,10 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, allPosts }) => {
             <button className="btn">
               <Link to="/">Home</Link>
             </button>
+            <button className="btn">
+              <Link to="/profile">Profile</Link>
+            </button>
+            d
           </div>
           {/* implement search bar */}
           <div className="search">

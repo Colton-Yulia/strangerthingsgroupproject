@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import SinglePost from "./components/SinglePost";
+import Profile from "./components/Profile";
 
 function App() {
   const COHORT_NAME = "2304-FTB-ET-WEB-FT";
@@ -74,6 +75,7 @@ function App() {
             <SinglePost setIsLoggedIn={setIsLoggedIn} allPosts={allPosts} />
           }
         />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );
