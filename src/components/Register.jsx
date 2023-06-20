@@ -13,7 +13,6 @@ const Register = ({ setIsLoggedIn }) => {
     try {
       const result = await registerUser(username, password);
       console.log(result);
-
       localStorage.setItem("token", result.token);
       setIsLoggedIn(true);
       navigate("/posts");
@@ -58,7 +57,6 @@ const Register = ({ setIsLoggedIn }) => {
         <Link to="/login">Already have an account? Log in here</Link>
       </form>
     </div>
-
   );
 };
 

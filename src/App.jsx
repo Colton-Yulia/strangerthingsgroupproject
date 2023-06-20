@@ -59,12 +59,12 @@ function App() {
           path="/login"
           element={<Login setIsLoggedIn={setIsLoggedIn} />}
         />
-        <Route
+        {/* <Route
           path="/singlepost/:id"
           element={
             <SinglePost setIsLoggedIn={setIsLoggedIn} allPosts={allPosts} />
           }
-        />
+        /> */}
         <Route
           path="/register"
           element={<Register setIsLoggedIn={setIsLoggedIn} />}

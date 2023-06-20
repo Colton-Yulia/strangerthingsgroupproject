@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { postMessage } from "../api-adapters";
 
 const SinglePost = ({ allPosts }) => {
   const { id } = useParams();
   const [singleFilteredPost, setSingleFilteredPost] = useState(null);
-  console.log(id);
+  console.log(_id);
+
+  const sendMessage = async () => {
+    try {
+      const result = await postMessage(content);
+      console.log(result);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
     const filteredPost = allPosts.find((singlePostIdentity) => {
@@ -40,6 +50,27 @@ const SinglePost = ({ allPosts }) => {
                 {singleFilteredPost.active ? "Active" : "Inactive"}
               </li>
             </ul>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                sendMessage();
+              }}
+            >
+              <label>
+                Send Message:
+                <input
+                  type="text"
+                  placeholder="Enter Message"
+                  value={content}
+                  onChange={(e) => {
+                    setContent(e.target.value);
+                  }}
+                />
+              </label>
+              <button type="submit" className="loginBtn">
+                Submit
+              </button>
+            </form>
             <button>
               <Link to="/newpost">Create New Post</Link>
             </button>

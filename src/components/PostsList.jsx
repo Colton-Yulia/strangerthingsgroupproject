@@ -1,6 +1,7 @@
 import { Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { deletePost } from "../api-adapters";
+
 // import { SearchBar } from "./SearchBar";
 
 import "./postList.css";
@@ -9,8 +10,16 @@ const PostsList = () => {
   const COHORT_NAME = "2304-FTB-ET-WEB-FT";
   const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
   const [allPosts, setAllPosts] = useState([]);
-  const [removePostRequest, setRemovePostRequest] = useState([]);
-  const removePost = deletePost();
+
+  const changeHandler = async (e) => {
+    // e.preventDefault()
+    try {
+      const result = await deletePost(id);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,9 +59,10 @@ const PostsList = () => {
                     {singlePost.active ? "Active" : "Inactive"}
                   </li>
                 </ul>
-                <button>
+                <button onClick={(e) => changeHandler}>Delete Post</button>
+                <button onClick={() => console.log("test")}>
                   singlepost
-                  <Link to="/singlepost/:id" />
+                  <Link to="/singlepost" />
                 </button>
               </div>
             );

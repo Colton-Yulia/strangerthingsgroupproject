@@ -59,7 +59,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, allPosts }) => {
           <div>LogoPlaceHolder</div>
           <div>
             <button className="btn">
-              <Link to="/posts">Posts</Link>
+              <Link to="/singleposts">Posts</Link>
             </button>
             <button className="btn">
               <Link to="/login">Login</Link>

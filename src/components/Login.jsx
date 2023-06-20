@@ -1,4 +1,3 @@
-
 //const BASE_URL = "https://strangers-things.herokuapp.com/api/2304-ftb-et-web-ft";
 //const COHORT_NAME = '2304-FTB-ET-WEB-FT';
 import "./login.css";
@@ -19,7 +18,6 @@ const Login = ({ setIsLoggedIn }) => {
       const result = await loginUser(username, password);
       console.log(result);
       localStorage.setItem("token", result.token);
-      console.log(token);
       setIsLoggedIn(true);
       navigate("/profile");
     } catch (error) {

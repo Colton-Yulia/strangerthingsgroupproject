@@ -55,7 +55,7 @@ export const newPost = async (
   title,
   description,
   price,
-  location,
+  // location,
   willDeliver
 ) => {
   try {
@@ -81,7 +81,7 @@ export const newPost = async (
   }
 };
 
-export const deletePost = async () => {
+export const deletePost = async (id) => {
   try {
     const { id } = useParams();
     const response = await fetch(`${BASE_URL}/posts/${id}`, {
@@ -99,7 +99,7 @@ export const deletePost = async () => {
   }
 };
 
-const postMessage = async () => {
+export const postMessage = async (content) => {
   try {
     const response = await fetch(
       `${BASE_URL}/posts/5e8929ddd439160017553e06/messages`,
