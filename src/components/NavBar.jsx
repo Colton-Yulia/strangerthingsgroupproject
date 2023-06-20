@@ -21,18 +21,6 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, allPosts }) => {
           </div>
           {/* implement search bar */}
           <div className="search">
-            <form>
-              <input
-                className="search-bar"
-                placeholder="Search"
-                value={input}
-                onChange={(e) =>
-                  allPosts.filter((singlePost) => {
-                    return <div key={singlePost._id}></div>;
-                  })
-                }
-              ></input>
-            </form>
             <button className="btn">
               <Link to="/posts">Posts</Link>
             </button>

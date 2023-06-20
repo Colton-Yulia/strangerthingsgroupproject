@@ -18,7 +18,7 @@ const Profile = () => {
         },
       });
       const result = await response.json();
-      console.log(result.data);
+      // console.log(result.data);
       setProfileData(result.data);
       return result;
     } catch (err) {

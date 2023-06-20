@@ -20,7 +20,7 @@ export const registerUser = async (username, password) => {
       }),
     });
     const result = await response.json();
-    console.log(result, "result");
+    // console.log(result, "result");
     return result.data;
   } catch (error) {
     console.log(error);
@@ -43,7 +43,7 @@ export const loginUser = async (username, password) => {
       }),
     });
     const result = await response.json();
-    console.log(result, "result");
+    // console.log(result, "result");
     return result.data;
   } catch (error) {
     console.log(error);
@@ -74,7 +74,7 @@ export const newPost = async (
       }),
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     return result;
   } catch (err) {
     console.error(err);
@@ -92,7 +92,7 @@ export const deletePost = async (id) => {
       },
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     return result;
   } catch (err) {
     console.error(err);
@@ -117,7 +117,7 @@ export const postMessage = async (content) => {
       }
     );
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     return result;
   } catch (err) {
     console.error(err);

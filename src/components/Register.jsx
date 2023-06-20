@@ -12,7 +12,7 @@ const Register = ({ setIsLoggedIn }) => {
     // e.preventDefault();
     try {
       const result = await registerUser(username, password);
-      console.log(result);
+      // console.log(result);
       localStorage.setItem("token", result.token);
       setIsLoggedIn(true);
       navigate("/posts");

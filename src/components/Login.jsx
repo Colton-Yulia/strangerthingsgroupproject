@@ -16,7 +16,7 @@ const Login = ({ setIsLoggedIn }) => {
     // e.preventDefault();
     try {
       const result = await loginUser(username, password);
-      console.log(result);
+      // console.log(result);
       localStorage.setItem("token", result.token);
       setIsLoggedIn(true);
       navigate("/profile");

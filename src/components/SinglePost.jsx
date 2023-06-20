@@ -5,12 +5,12 @@ import { postMessage } from "../api-adapters";
 const SinglePost = ({ allPosts }) => {
   const { id } = useParams();
   const [singleFilteredPost, setSingleFilteredPost] = useState(null);
-  console.log(_id);
+  // console.log(_id);
 
   const sendMessage = async () => {
     try {
       const result = await postMessage(content);
-      console.log(result);
+      // console.log(result);
     } catch (err) {
       console.error(err);
     }
@@ -29,7 +29,7 @@ const SinglePost = ({ allPosts }) => {
       setSingleFilteredPost(null);
     }
   }, [allPosts]);
-  console.log(singleFilteredPost);
+  // console.log(singleFilteredPost);
   return (
     <div>
       <div className="single-post-body">

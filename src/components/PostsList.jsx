@@ -2,7 +2,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { deletePost } from "../api-adapters";
 
-// import { SearchBar } from "./SearchBar";
+import { SearchBar } from "./SearchBar";
 
 import "./postList.css";
 
@@ -15,7 +15,7 @@ const PostsList = () => {
     // e.preventDefault()
     try {
       const result = await deletePost(id);
-      console.log(result);
+      // console.log(result);
     } catch (error) {
       console.log(error);
     }
@@ -36,10 +36,11 @@ const PostsList = () => {
 
   return (
     <div>
+      <SearchBar allPosts={allPosts} />
       <div className="post-list-body">
         {allPosts.length ? (
           allPosts.map((singlePost) => {
-            console.log(singlePost);
+            // console.log(singlePost);
             return (
               <div key={singlePost._id} className="posts-list">
                 <ul>

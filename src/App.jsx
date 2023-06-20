@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log(token);
+    // console.log(token);
     if (token) {
       setIsLoggedIn(true);
     }
@@ -31,7 +31,7 @@ function App() {
         const res = await fetch(`${BASE_URL}/posts`);
         const translatedData = await res.json();
         setAllPosts(translatedData.data.posts);
-        console.log(translatedData.data.posts);
+        // console.log(translatedData.data.posts);
       } catch (error) {
         console.log(error);
       }
@@ -59,12 +59,6 @@ function App() {
           path="/login"
           element={<Login setIsLoggedIn={setIsLoggedIn} />}
         />
-        {/* <Route
-          path="/singlepost/:id"
-          element={
-            <SinglePost setIsLoggedIn={setIsLoggedIn} allPosts={allPosts} />
-          }
-        /> */}
         <Route
           path="/register"
           element={<Register setIsLoggedIn={setIsLoggedIn} />}
