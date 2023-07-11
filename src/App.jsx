@@ -48,7 +48,12 @@ function App() {
         allPosts={allPosts}
       />
       <Routes>
-        <Route path="/posts" element={<PostsList allPosts={allPosts} />} />
+        <Route
+          path="/posts"
+          element={
+            <PostsList allPosts={allPosts} setIsLoggedIn={setIsLoggedIn} />
+          }
+        />
         <Route
           path="/newpost"
           element={<NewPost setIsLoggedIn={setIsLoggedIn} />}
@@ -64,7 +69,7 @@ function App() {
           element={<Register setIsLoggedIn={setIsLoggedIn} />}
         />
         <Route
-          path="/singlepost/:id"
+          path="/post/:id"
           element={
             <SinglePost setIsLoggedIn={setIsLoggedIn} allPosts={allPosts} />
           }

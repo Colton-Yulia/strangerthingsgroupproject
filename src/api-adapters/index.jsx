@@ -55,10 +55,11 @@ export const newPost = async (
   title,
   description,
   price,
-  // location,
+  location,
   willDeliver
 ) => {
   try {
+    const TOKEN_STRING = localStorage.getItem("token");
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "POST",
       headers: {
@@ -66,13 +67,16 @@ export const newPost = async (
         Authorization: `Bearer ${TOKEN_STRING}`,
       },
       body: JSON.stringify({
-        title: title,
-        description: description,
-        price: price,
-        location: location,
-        willDeliver: willDeliver,
+        post: {
+          title: title,
+          description: description,
+          price: price,
+          location: location,
+          willDeliver: willDeliver,
+        },
       }),
     });
+
     const result = await response.json();
     // console.log(result);
     return result;
@@ -81,11 +85,12 @@ export const newPost = async (
   }
 };
 
-export const deletePost = async (id) => {
+export const deletePost = async (e, { allposts }) => {
   try {
     const { id } = useParams();
     const response = await fetch(`${BASE_URL}/posts/${id}`, {
       method: "DELETE",
+      // Ask about bearer tokens
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${TOKEN_STRING}`,

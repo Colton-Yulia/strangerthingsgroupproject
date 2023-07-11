@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { postMessage } from "../api-adapters";
+import { deletePost, postMessage } from "../api-adapters";
 
 const SinglePost = ({ allPosts }) => {
-  const { id } = useParams();
   const [singleFilteredPost, setSingleFilteredPost] = useState(null);
-  // console.log(_id);
+  const { id } = useParams();
+  console.log(id);
 
   const sendMessage = async () => {
     try {
@@ -17,11 +17,14 @@ const SinglePost = ({ allPosts }) => {
   };
 
   useEffect(() => {
-    const filteredPost = allPosts.find((singlePostIdentity) => {
-      if (singlePostIdentity._id === id) {
+    const filteredPost = allPosts.find((e) => {
+      if (e._id === id) {
         return true;
+      } else {
+        return false;
       }
     });
+    console.log(filteredPost);
 
     if (filteredPost) {
       setSingleFilteredPost(filteredPost);
@@ -29,11 +32,12 @@ const SinglePost = ({ allPosts }) => {
       setSingleFilteredPost(null);
     }
   }, [allPosts]);
+
   // console.log(singleFilteredPost);
   return (
     <div>
       <div className="single-post-body">
-        {singleFilteredPost && singleFilteredPost._id ? (
+        {singleFilteredPost ? (
           <div className="singlePost">
             <ul>
               <li>Location: {singleFilteredPost.location}</li>
@@ -74,6 +78,7 @@ const SinglePost = ({ allPosts }) => {
             <button>
               <Link to="/newpost">Create New Post</Link>
             </button>
+            <button onClick={deletePost} value={allPosts.id}></button>
           </div>
         ) : (
           <p>Loading...</p>

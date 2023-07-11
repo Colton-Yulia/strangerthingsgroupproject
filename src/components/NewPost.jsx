@@ -72,7 +72,8 @@ const NewPost = ({ setIsLoggedIn }) => {
               name="location"
               value={location}
               onChange={(e) => {
-                setLocation(e.target.value), console.log(e.target.value);
+                console.log(e.target.value);
+                setLocation(e.target.value);
               }}
             ></input>
           </label>
@@ -80,12 +81,22 @@ const NewPost = ({ setIsLoggedIn }) => {
         <div>
           <label htmlFor="willDeliver">
             Will Deliver:
+            <label>Yes</label>
             <input
-              type="text"
+              type="radio"
               name="willDeliver"
-              value={willDeliver}
+              value={true}
               onChange={(e) => {
-                setWillDeliver(e.target.value), console.log(e.target.value);
+                setWillDeliver(e.target.value);
+              }}
+            ></input>
+            <label>No</label>
+            <input
+              type="radio"
+              name="willDeliver"
+              value={false}
+              onChange={(e) => {
+                setWillDeliver(e.target.value);
               }}
             ></input>
           </label>
