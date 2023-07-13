@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { deletePost, postMessage } from "../api-adapters";
 
-const SinglePost = ({ allPosts }) => {
+const SinglePost = ({ allPosts, setAllPosts }) => {
+  const [content, setContent] = useState("");
   const [singleFilteredPost, setSingleFilteredPost] = useState(null);
+
   const { id } = useParams();
+  const navigate = useNavigate();
   console.log(id);
 
   const sendMessage = async () => {
@@ -13,6 +16,21 @@ const SinglePost = ({ allPosts }) => {
       // console.log(result);
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  const handleDeletePost = async (e) => {
+    try {
+      await deletePost(e);
+      const updatedAllPostList = allPost.filter((e) => {
+        if (e._id !== id) {
+          return true;
+        }
+      });
+      setAllPosts(updatedAllPostList);
+      navigate("/posts");
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -75,10 +93,9 @@ const SinglePost = ({ allPosts }) => {
                 Submit
               </button>
             </form>
-            <button>
-              <Link to="/newpost">Create New Post</Link>
+            <button onClick={handleDeletePost} value={singleFilteredPost._id}>
+              Delete Post
             </button>
-            <button onClick={deletePost} value={allPosts.id}></button>
           </div>
         ) : (
           <p>Loading...</p>

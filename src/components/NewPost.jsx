@@ -58,6 +58,7 @@ const NewPost = ({ setIsLoggedIn }) => {
               type="text"
               name="price"
               value={price}
+              pattern="[0-9]+"
               onChange={(e) => {
                 setPrice(e.target.value), console.log(e.target.value);
               }}

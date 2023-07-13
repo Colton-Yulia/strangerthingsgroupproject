@@ -71,10 +71,14 @@ function App() {
         <Route
           path="/post/:id"
           element={
-            <SinglePost setIsLoggedIn={setIsLoggedIn} allPosts={allPosts} />
+            <SinglePost
+              setIsLoggedIn={setIsLoggedIn}
+              allPosts={allPosts}
+              setAllPosts={setAllPosts}
+            />
           }
         />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} allpost={allPosts} />
       </Routes>
     </div>
   );

@@ -85,10 +85,9 @@ export const newPost = async (
   }
 };
 
-export const deletePost = async (e, { allposts }) => {
+export const deletePost = async (e) => {
   try {
-    const { id } = useParams();
-    const response = await fetch(`${BASE_URL}/posts/${id}`, {
+    const response = await fetch(`${BASE_URL}/posts/${e.target.value}`, {
       method: "DELETE",
       // Ask about bearer tokens
       headers: {
@@ -104,25 +103,38 @@ export const deletePost = async (e, { allposts }) => {
   }
 };
 
-export const postMessage = async (content) => {
+export const postMessage = async () => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/posts/5e8929ddd439160017553e06/messages`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${TOKEN_STRING}`,
+    const response = await fetch(`${BASE_URL}/posts/${id}/messages`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TOKEN_STRING}`,
+      },
+      body: JSON.stringify({
+        message: {
+          content: "",
         },
-        body: JSON.stringify({
-          message: {
-            content: content,
-          },
-        }),
-      }
-    );
+      }),
+    });
     const result = await response.json();
     // console.log(result);
+    return result;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const myData = async () => {
+  try {
+    const response = await fetch(`${BASE_URL}/users/me`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TOKEN_STRING}`,
+      },
+    });
+    const result = await response.json();
+    console.log(result);
     return result;
   } catch (err) {
     console.error(err);

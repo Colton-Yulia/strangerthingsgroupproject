@@ -13,6 +13,7 @@ ul {
   flex-direction: column;
   margin: 1rem;
   padding-left: 0.5rem;
+  height: 15rem;
 }
 
 li {
