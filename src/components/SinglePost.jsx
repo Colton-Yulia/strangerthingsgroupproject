@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { deletePost, postMessage } from "../api-adapters";
+import { deletePost } from "../api-adapters";
 
 const SinglePost = ({ allPosts, setAllPosts }) => {
   const [content, setContent] = useState("");
@@ -10,19 +10,10 @@ const SinglePost = ({ allPosts, setAllPosts }) => {
   const navigate = useNavigate();
   console.log(id);
 
-  const sendMessage = async () => {
-    try {
-      const result = await postMessage(content);
-      // console.log(result);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   const handleDeletePost = async (e) => {
     try {
       await deletePost(e);
-      const updatedAllPostList = allPost.filter((e) => {
+      const updatedAllPostList = allPosts.filter((e) => {
         if (e._id !== id) {
           return true;
         }
@@ -50,6 +41,52 @@ const SinglePost = ({ allPosts, setAllPosts }) => {
       setSingleFilteredPost(null);
     }
   }, [allPosts]);
+
+  const handleUpdate = props.allPosts.filter((singlePost) => {
+    if (singlePost.allPosts == id) {
+      return singlePost;
+    }
+  })[0];
+
+  const sendPutRequest = async (e) => {
+    try {
+      const response = await fetch(`${BASE_URL}/posts/${e.target.value}`, {
+        method: "PUT",
+        // Ask about bearer tokens
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${TOKEN_STRING}`,
+        },
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          post: {
+            title: title,
+            description: description,
+            price: price,
+            location: location,
+            willDeliver: willDeliver,
+          },
+        }),
+      });
+      const result = await response.json();
+
+      const updatedAllPostList = props.post.filter((singlePost) => {
+        if (singlePost._id !== id) {
+          return singleFilteredPost;
+        }
+      });
+
+      const newUpdatedAllPost = [...updatedAllPostList, result];
+      props.setReview(newUpdatedAllPost);
+      // console.log(result);
+      return result;
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   // console.log(singleFilteredPost);
   return (
